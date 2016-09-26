@@ -1,0 +1,25 @@
+<% if current_user.admin? %>
+  <h1>ADMIN</h1>
+<% end %>
+
+<% if policy(@user).update? && policy(@user).destroy? %>
+  <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
+  <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
+<% end %>
+<br>
+
+<ul>
+  <li>Name: <%= @user.name %></li>
+  <li>Height: <%= @user.height %></li>
+
+  <% if !current_user.admin %>
+    <li>Nausea: <%= @user.nausea %></li>
+  <% end %>
+
+  <li>Tickets: <%= @user.tickets %></li>
+  <li>Mood: <%= @user.mood %></li>
+
+  <%# link_to "Edit", edit_user_path(@user) %>
+</ul>
+
+<%= link_to "See attractions", attractions_path, class: "btn btn-primary" %>

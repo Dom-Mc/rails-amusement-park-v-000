@@ -1,0 +1,22 @@
+<h1>Listing attractions</h1>
+
+<% if policy(Attraction).create? %>
+  <%= link_to "New Attraction", new_attraction_path, class: "btn btn-primary btn-sm" %>
+<% end %>
+
+<ul>
+  <% policy_scope(@attractions).each do |attraction| %>
+    <h3><%= attraction.name %></h3>
+    <li>Tickets: <%= attraction.tickets %></li>
+    <li>Nausea Rating: <%= attraction.nausea_rating %></li>
+    <li>Happiness Rating: <%= attraction.happiness_rating %></li>
+    <li>Min Height: <%= attraction.min_height %></li><br>
+
+    <% if current_user.admin? %>
+      <%= link_to "Show #{attraction.name}", attraction, class: "btn btn-primary btn-sm" %>
+    <% else %>
+      <%= link_to "Go on #{attraction.name}", attraction, class: "btn btn-primary btn-sm" %>
+    <% end %>
+
+  <% end %>
+</ul>

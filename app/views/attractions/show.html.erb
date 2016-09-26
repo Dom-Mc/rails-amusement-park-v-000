@@ -1,0 +1,25 @@
+<h1>Attractions</h1>
+
+<% if policy(@attraction).update? %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction), class: "btn btn-primary" %>
+  <%= link_to 'Delete Attraction', @attraction, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
+<% else %>
+
+  <%= form_for @ride, url: new_ride_path, html: {method: :post} do |f| %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :attraction_id, :value => @attraction.id %>
+    <%= f.submit "Go on this ride", class: "btn btn-primary btn-sm" %>
+  <% end %>
+
+<% end %>
+
+<ul>
+  <h3><%= @attraction.name %></h3>
+  <li>Total number of users: <%= @attraction.users.count %></li>
+  <li>Tickets: <%= @attraction.tickets %></li>
+  <li>Nausea Rating: <%= @attraction.nausea_rating %></li>
+  <li>Happiness Rating: <%= @attraction.happiness_rating %></li>
+  <li>Min Height: <%= @attraction.min_height %></li><br>
+</ul>
+
+<%= link_to "Back", :back, class: "btn btn-primary" %>

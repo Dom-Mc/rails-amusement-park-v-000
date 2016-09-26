@@ -25,6 +25,8 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'pundit'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
@@ -47,6 +49,7 @@ group :test, :development do
   gem "sqlite3"
   gem "pry"
   gem "rack_session_access"
+  gem 'annotate'
 end
 
 group :production do
