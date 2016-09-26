@@ -2,8 +2,11 @@
   <div class="container">
     <h1 class="display-3">Welcome to the Amusement Park!</h1>
     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <%= link_to "Sign In", signin_path, class: "btn btn-primary" %>
-    <%= link_to "Sign Up", new_user_path, class: "btn btn-primary" %>
 
+    <% unless logged_in? %>
+      <%= link_to "Sign In", signin_path, class: "btn btn-primary" %>
+      <%= link_to "Sign Up", new_user_path, class: "btn btn-primary" %>
+    <% end %>
+    
   </div>
 </div>
